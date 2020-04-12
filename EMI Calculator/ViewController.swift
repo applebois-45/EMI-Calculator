@@ -15,7 +15,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("Hello world")
     }
-
-
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let vc = EMIInitialFormViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: false, completion: nil)
+        
+    }
 }
 

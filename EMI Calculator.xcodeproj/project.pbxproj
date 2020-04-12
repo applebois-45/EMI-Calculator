@@ -16,6 +16,21 @@
 		1C90C00E243E0F26001A9960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C90C00C243E0F26001A9960 /* LaunchScreen.storyboard */; };
 		1C90C019243E0F27001A9960 /* EMI_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C018243E0F27001A9960 /* EMI_CalculatorTests.swift */; };
 		1C90C024243E0F27001A9960 /* EMI_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C023243E0F27001A9960 /* EMI_CalculatorUITests.swift */; };
+		6896E638244336D600953F4D /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6896E635244336D500953F4D /* OpenSans-SemiBold.ttf */; };
+		6896E639244336D600953F4D /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6896E636244336D600953F4D /* OpenSans-Regular.ttf */; };
+		6896E63A244336D600953F4D /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6896E637244336D600953F4D /* OpenSans-Bold.ttf */; };
+		6896E6432443384100953F4D /* EMIDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896E63D2443384100953F4D /* EMIDetailCell.swift */; };
+		6896E6442443384100953F4D /* EMIDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6896E63E2443384100953F4D /* EMIDetailHeaderCell.xib */; };
+		6896E6452443384100953F4D /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6896E63F2443384100953F4D /* HistoryCell.xib */; };
+		6896E6462443384100953F4D /* EMIDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6896E6402443384100953F4D /* EMIDetailCell.xib */; };
+		6896E6472443384100953F4D /* EMIDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896E6412443384100953F4D /* EMIDetailHeaderCell.swift */; };
+		6896E6482443384100953F4D /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896E6422443384100953F4D /* HistoryCell.swift */; };
+		6896E64F2443387700953F4D /* EMIInitialFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6896E6492443387700953F4D /* EMIInitialFormViewController.xib */; };
+		6896E6502443387700953F4D /* EMIHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6896E64A2443387700953F4D /* EMIHistoryViewController.xib */; };
+		6896E6512443387700953F4D /* EMIHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896E64B2443387700953F4D /* EMIHistoryViewController.swift */; };
+		6896E6522443387700953F4D /* EMIDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896E64C2443387700953F4D /* EMIDetailViewController.swift */; };
+		6896E6532443387700953F4D /* EMIInitialFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896E64D2443387700953F4D /* EMIInitialFormViewController.swift */; };
+		6896E6542443387700953F4D /* EMIDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6896E64E2443387700953F4D /* EMIDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,21 @@
 		1C90C01F243E0F27001A9960 /* EMI CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMI CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C90C023243E0F27001A9960 /* EMI_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMI_CalculatorUITests.swift; sourceTree = "<group>"; };
 		1C90C025243E0F27001A9960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6896E635244336D500953F4D /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		6896E636244336D600953F4D /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		6896E637244336D600953F4D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		6896E63D2443384100953F4D /* EMIDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMIDetailCell.swift; sourceTree = "<group>"; };
+		6896E63E2443384100953F4D /* EMIDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMIDetailHeaderCell.xib; sourceTree = "<group>"; };
+		6896E63F2443384100953F4D /* HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		6896E6402443384100953F4D /* EMIDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMIDetailCell.xib; sourceTree = "<group>"; };
+		6896E6412443384100953F4D /* EMIDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMIDetailHeaderCell.swift; sourceTree = "<group>"; };
+		6896E6422443384100953F4D /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		6896E6492443387700953F4D /* EMIInitialFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMIInitialFormViewController.xib; sourceTree = "<group>"; };
+		6896E64A2443387700953F4D /* EMIHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMIHistoryViewController.xib; sourceTree = "<group>"; };
+		6896E64B2443387700953F4D /* EMIHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMIHistoryViewController.swift; sourceTree = "<group>"; };
+		6896E64C2443387700953F4D /* EMIDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMIDetailViewController.swift; sourceTree = "<group>"; };
+		6896E64D2443387700953F4D /* EMIInitialFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMIInitialFormViewController.swift; sourceTree = "<group>"; };
+		6896E64E2443387700953F4D /* EMIDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMIDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +131,9 @@
 		1C90BFFD243E0F1A001A9960 /* EMI Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				6896E63C244337D300953F4D /* Cell */,
+				6896E63B2443379000953F4D /* Controller */,
+				6896E6332443368200953F4D /* Fonts */,
 				1C90BFFE243E0F1A001A9960 /* AppDelegate.swift */,
 				1C90C000243E0F1A001A9960 /* SceneDelegate.swift */,
 				1C90C002243E0F1A001A9960 /* ViewController.swift */,
@@ -129,6 +162,42 @@
 				1C90C025243E0F27001A9960 /* Info.plist */,
 			);
 			path = "EMI CalculatorUITests";
+			sourceTree = "<group>";
+		};
+		6896E6332443368200953F4D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6896E637244336D600953F4D /* OpenSans-Bold.ttf */,
+				6896E636244336D600953F4D /* OpenSans-Regular.ttf */,
+				6896E635244336D500953F4D /* OpenSans-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6896E63B2443379000953F4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6896E64C2443387700953F4D /* EMIDetailViewController.swift */,
+				6896E64E2443387700953F4D /* EMIDetailViewController.xib */,
+				6896E64B2443387700953F4D /* EMIHistoryViewController.swift */,
+				6896E64A2443387700953F4D /* EMIHistoryViewController.xib */,
+				6896E64D2443387700953F4D /* EMIInitialFormViewController.swift */,
+				6896E6492443387700953F4D /* EMIInitialFormViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6896E63C244337D300953F4D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6896E63D2443384100953F4D /* EMIDetailCell.swift */,
+				6896E6402443384100953F4D /* EMIDetailCell.xib */,
+				6896E6412443384100953F4D /* EMIDetailHeaderCell.swift */,
+				6896E63E2443384100953F4D /* EMIDetailHeaderCell.xib */,
+				6896E6422443384100953F4D /* HistoryCell.swift */,
+				6896E63F2443384100953F4D /* HistoryCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,7 +304,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6896E639244336D600953F4D /* OpenSans-Regular.ttf in Resources */,
+				6896E6542443387700953F4D /* EMIDetailViewController.xib in Resources */,
+				6896E638244336D600953F4D /* OpenSans-SemiBold.ttf in Resources */,
+				6896E6452443384100953F4D /* HistoryCell.xib in Resources */,
+				6896E6442443384100953F4D /* EMIDetailHeaderCell.xib in Resources */,
+				6896E64F2443387700953F4D /* EMIInitialFormViewController.xib in Resources */,
+				6896E6462443384100953F4D /* EMIDetailCell.xib in Resources */,
+				6896E63A244336D600953F4D /* OpenSans-Bold.ttf in Resources */,
 				1C90C00E243E0F26001A9960 /* LaunchScreen.storyboard in Resources */,
+				6896E6502443387700953F4D /* EMIHistoryViewController.xib in Resources */,
 				1C90C00B243E0F26001A9960 /* Assets.xcassets in Resources */,
 				1C90C006243E0F1B001A9960 /* Main.storyboard in Resources */,
 			);
@@ -263,8 +341,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C90C003243E0F1A001A9960 /* ViewController.swift in Sources */,
+				6896E6532443387700953F4D /* EMIInitialFormViewController.swift in Sources */,
+				6896E6482443384100953F4D /* HistoryCell.swift in Sources */,
+				6896E6522443387700953F4D /* EMIDetailViewController.swift in Sources */,
 				1C90BFFF243E0F1A001A9960 /* AppDelegate.swift in Sources */,
 				1C90C001243E0F1A001A9960 /* SceneDelegate.swift in Sources */,
+				6896E6472443384100953F4D /* EMIDetailHeaderCell.swift in Sources */,
+				6896E6512443387700953F4D /* EMIHistoryViewController.swift in Sources */,
+				6896E6432443384100953F4D /* EMIDetailCell.swift in Sources */,
 				1C90C009243E0F1B001A9960 /* EMI_Calculator.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
