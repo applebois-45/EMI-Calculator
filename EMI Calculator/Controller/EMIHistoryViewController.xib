@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHH-bR-KbG">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="738"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJz-u9-ImN">
                                     <rect key="frame" x="20" y="25" width="334" height="27"/>
@@ -52,7 +52,7 @@
                                         <constraint firstAttribute="height" constant="27" id="uol-Ol-iFc"/>
                                     </constraints>
                                     <attributedString key="attributedText">
-                                        <fragment content="EMI History">
+                                        <fragment content="History">
                                             <attributes>
                                                 <color key="NSColor" red="0.23529411764705882" green="0.21568627450980393" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="20" name="OpenSans-Semibold"/>
@@ -70,7 +70,7 @@
                                     </constraints>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIe-0P-gTI">
-                                    <rect key="frame" x="128" y="662" width="158" height="46"/>
+                                    <rect key="frame" x="128" y="642" width="158" height="46"/>
                                     <color key="backgroundColor" red="0.10980392160000001" green="0.68627450980000004" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="158" id="d5u-Pl-0sF"/>
@@ -96,13 +96,13 @@
                                     </constraints>
                                     <state key="normal" image="deleteBtn"/>
                                     <connections>
-                                        <action selector="savePdf:" destination="-1" eventType="touchUpInside" id="kEd-h2-Mng"/>
+                                        <action selector="deleteBtnAction:" destination="-1" eventType="touchUpInside" id="SZP-Lb-kiO"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstItem="LIe-0P-gTI" firstAttribute="top" secondItem="gQ7-4Z-Ui4" secondAttribute="bottom" constant="40" id="DKc-Ym-gw2"/>
+                                <constraint firstItem="LIe-0P-gTI" firstAttribute="top" secondItem="gQ7-4Z-Ui4" secondAttribute="bottom" constant="20" id="DKc-Ym-gw2"/>
                                 <constraint firstAttribute="trailing" secondItem="gQ7-4Z-Ui4" secondAttribute="trailing" constant="20" id="Ja7-1w-Zz4"/>
                                 <constraint firstItem="gQ7-4Z-Ui4" firstAttribute="top" secondItem="fJz-u9-ImN" secondAttribute="bottom" constant="17" id="Owv-Bb-2vC"/>
                                 <constraint firstItem="LIe-0P-gTI" firstAttribute="centerX" secondItem="sHH-bR-KbG" secondAttribute="centerX" id="aGT-Vd-1za"/>
