@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EMIHistoryViewController" customModule="EMI_Calculator" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EMIDeleteHistoryController">
             <connections>
                 <outlet property="applyBtn" destination="LIe-0P-gTI" id="aAd-RX-Z64"/>
                 <outlet property="itemList" destination="gQ7-4Z-Ui4" id="GUd-kH-rTE"/>
@@ -32,7 +32,7 @@
                             </constraints>
                             <state key="normal" image="pqBack"/>
                             <connections>
-                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="L4Y-b0-4Xc"/>
+                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="5eV-Ip-JB0"/>
                             </connections>
                         </button>
                     </subviews>
@@ -65,7 +65,7 @@
                                     </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gQ7-4Z-Ui4">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gQ7-4Z-Ui4">
                                     <rect key="frame" x="20" y="69" width="374" height="553"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
@@ -92,12 +92,13 @@
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbC-gV-tUh">
-                                    <rect key="frame" x="371" y="27.5" width="19" height="22"/>
+                                    <rect key="frame" x="313" y="27.5" width="77" height="22"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="19" id="Ex0-T9-xL2"/>
                                         <constraint firstAttribute="height" constant="22" id="eqQ-4b-iQ4"/>
                                     </constraints>
-                                    <state key="normal" image="deleteBtn"/>
+                                    <state key="normal" title="Delete All">
+                                        <color key="titleColor" red="0.10980392160000001" green="0.68627450980000004" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                     <connections>
                                         <action selector="deleteBtnAction:" destination="-1" eventType="touchUpInside" id="SZP-Lb-kiO"/>
                                     </connections>
@@ -144,7 +145,6 @@
         </view>
     </objects>
     <resources>
-        <image name="deleteBtn" width="16" height="19.5"/>
         <image name="pqBack" width="18" height="15"/>
     </resources>
 </document>

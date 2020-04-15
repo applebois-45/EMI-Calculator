@@ -14,7 +14,7 @@
                 <outlet property="loanDetailContainerView" destination="PXx-bX-hpJ" id="bgm-Mt-qg2"/>
                 <outlet property="loanDetailView" destination="C0K-wF-V2r" id="hVT-sO-lW2"/>
                 <outlet property="monthlyEmiLbl" destination="xMq-NB-Tqc" id="s12-iL-MoE"/>
-                <outlet property="reloadBtn" destination="uMg-fi-4sA" id="k8B-Lc-X1M"/>
+                <outlet property="reloadBtn" destination="QXg-mM-u0r" id="TRZ-o8-5v0"/>
                 <outlet property="requiredAmountLbl" destination="ojb-UU-aq5" id="7Gy-aG-DjI"/>
                 <outlet property="requiredAmountTxtField" destination="ND5-oD-GhT" id="Coy-Sx-tMT"/>
                 <outlet property="roiLbl" destination="7Mw-Q3-CdA" id="jbE-lw-Xxs"/>
@@ -50,6 +50,9 @@
                                 <constraint firstAttribute="height" constant="40" id="xxT-wr-fuc"/>
                             </constraints>
                             <state key="normal" image="pqBack"/>
+                            <connections>
+                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="aVo-pL-Wkt"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +115,7 @@ and ROI</string>
                                     </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ND5-oD-GhT">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ND5-oD-GhT" customClass="TextField" customModule="EMI_Calculator" customModuleProvider="target">
                                     <rect key="frame" x="20" y="149.5" width="374" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="SyC-jA-dT8"/>

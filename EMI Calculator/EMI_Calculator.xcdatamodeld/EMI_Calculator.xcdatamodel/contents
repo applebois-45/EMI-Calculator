@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EmiHistory" representedClassName="EmiHistory" syncable="YES" codeGenerationType="class">
+        <attribute name="emi" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES">
+            <userInfo>
+                <entry key="key" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="loanAmount" optional="YES" attributeType="String"/>
+        <attribute name="roi" optional="YES" attributeType="String"/>
+        <attribute name="tenureMonth" optional="YES" attributeType="String"/>
+        <attribute name="tenureYear" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="EmiHistory" positionX="-63" positionY="-18" width="128" height="133"/>
+    </elements>
 </model>

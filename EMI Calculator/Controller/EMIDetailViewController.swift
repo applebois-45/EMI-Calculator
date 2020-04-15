@@ -40,6 +40,12 @@ class EMIDetailViewController: UIViewController {
     @IBAction func savePdf(_ sender: Any) {
         
     }
+    @IBAction func backButton(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: false)
+        NotificationCenter.default.removeObserver(self);
+        
+    }
     
 
 }
