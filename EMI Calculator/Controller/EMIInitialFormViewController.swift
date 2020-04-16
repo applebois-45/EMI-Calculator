@@ -50,6 +50,7 @@ class EMIInitialFormViewController: UIViewController {
     var roi:Float = 0.0
     var emi = 0.0
     var id = 0
+    var payableAmount = 0.0
     var selectedTxtField = UITextField()
     var isHistory = false
     override func viewDidLoad() {
@@ -140,7 +141,15 @@ class EMIInitialFormViewController: UIViewController {
     
     @IBAction func getDetailEMIAction(_ sender: Any) {
         let vc = EMIDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        vc.roi = self.roi
+        vc.tenureMonths = self.months
+        vc.tenureYrs = self.years
+        vc.principleamount = Float(self.amount)
+        vc.emi = Float(self.emi)
+//        vc.interest = self.amount
+        
+        pushVC(vc)
+//        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     @IBAction func applyBtnAction(_ sender: Any) {
@@ -150,7 +159,8 @@ class EMIInitialFormViewController: UIViewController {
     @IBAction func historyBtnAction(_ sender: Any) {
         
         let vc = EMIHistoryViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        pushVC(vc)
+//        self.navigationController?.pushViewController(vc, animated: false)
         selectedTxtField.resignFirstResponder()
 
     }
@@ -158,7 +168,8 @@ class EMIInitialFormViewController: UIViewController {
     @IBAction func reloadTextfield(_ sender: Any) {
         if isHistory {
             let vc = EMIHistoryViewController()
-            self.navigationController?.pushViewController(vc, animated: false)
+            pushVC(vc)
+//            self.navigationController?.pushViewController(vc, animated: false)
             selectedTxtField.resignFirstResponder()
         }else{
             calculateBtn.isHidden = false
@@ -179,10 +190,10 @@ class EMIInitialFormViewController: UIViewController {
         roiTxtField.becomeFirstResponder()
     }
     @IBAction func backButton(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: false)
+        self.popVC()
+//        self.navigationController?.popViewController(animated: false)
         selectedTxtField.resignFirstResponder()
-        NotificationCenter.default.removeObserver(self);
+//        NotificationCenter.default.removeObserver(self);
         
     }
     
@@ -298,7 +309,7 @@ extension EMIInitialFormViewController{
         let emi = emiCalculator(p: amount, r: roi, n: tmonths)
         self.emi = emi
         self.roi = roi
-           monthlyEmiLbl.text = moneyFormatter(text: "\(Int(emi))")
+           monthlyEmiLbl.text = "Monthly EMI " + moneyFormatter(text: "\(Int(emi))")
         
         let totalEmi = totalAmntPyable(principle: emi, tenureMonth: tmonths)
            
@@ -377,7 +388,7 @@ extension EMIInitialFormViewController{
         
         do {
             try managedContext.save()
-           retrieveData()
+        retrieveData()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -410,6 +421,14 @@ extension EMIInitialFormViewController{
                         reloadBtn.setImage(UIImage(named: "history.png"), for: .normal)
                     }
                 }
+                if result.count == 0{
+                    reloadBtn.setImage(UIImage(named: "reloadField"), for: .normal)
+                    requiredAmountTxtField.text?.removeAll()
+                    tenureYearsTxtField.text?.removeAll()
+                    tenureMonthsTxtField.text?.removeAll()
+                    roiTxtField.text?.removeAll()
+                    checkforEmpty()
+                }
                 
             } catch {
                 
@@ -437,3 +456,59 @@ class TextField: UITextField {
 }
 
  
+extension UIViewController {
+    
+    func pushVC(_ viewControllerToPresent: UIViewController) {
+//        let transition = CATransition()
+//        transition.duration = 0.25
+//        transition.type = CATransitionType.push
+//        transition.subtype = CATransitionSubtype.fromLeft
+//        self.view.window!.layer.add(transition, forKey: kCATransition)
+//        viewControllerToPresent.modalPresentationStyle = .overCurrentContext
+//        viewControllerToPresent.modalTransitionStyle = .crossDissolve
+//        present(viewControllerToPresent, animated: false)
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(viewControllerToPresent, animated: false)
+    }
+    
+    func popVC() {
+//        let transition = CATransition()
+//        transition.duration = 0.25
+//        transition.type = CATransitionType.fade
+//        transition.subtype = CATransitionSubtype.fromRight
+//        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
+//        dismiss(animated: false)
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.popViewController(animated: true)
+    }
+    func popToVC(vc:UIViewController) {
+    //        let transition = CATransition()
+    //        transition.duration = 0.25
+    //        transition.type = CATransitionType.fade
+    //        transition.subtype = CATransitionSubtype.fromRight
+    //        self.view.window!.layer.add(transition, forKey: kCATransition)
+            
+    //        dismiss(animated: false)
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromRight
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+            view.window!.layer.add(transition, forKey: kCATransition)
+            self.navigationController?.popToViewController(vc, animated: true)
+//            self.navigationController?.popViewController(animated: true)
+        }
+
+}

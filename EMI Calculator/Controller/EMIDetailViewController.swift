@@ -14,6 +14,13 @@ class EMIDetailViewController: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var tableviewHeight: NSLayoutConstraint!
+    var emi:Float = 0
+    var tenureYrs = 0
+    var tenureMonths = 0
+    var principleamount:Float = 0.0
+    var roi:Float = 0.0
+    
+    var paidPrincipal:Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +48,8 @@ class EMIDetailViewController: UIViewController {
         
     }
     @IBAction func backButton(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: false)
+        self.popVC()
+//        self.navigationController?.popViewController(animated: false)
         NotificationCenter.default.removeObserver(self);
         
     }
@@ -51,9 +58,9 @@ class EMIDetailViewController: UIViewController {
 }
 extension EMIDetailViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.tableviewHeight.constant = 48 * 6
+        self.tableviewHeight.constant = CGFloat(48 * (((tenureYrs*12 ) + tenureMonths) + 1))
         self.view.layoutIfNeeded()
-        return 5
+        return ((tenureYrs*12 ) + tenureMonths)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -61,6 +68,10 @@ extension EMIDetailViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EMIDetailCell") as? EMIDetailCell else {return UITableViewCell()}
         cell.monthLbl.text = "\(indexPath.row + 1)"
+        getMothlyEmiDetail(cell: cell)
+//        if indexPath.row == ((tenureYrs*12 ) + tenureMonths) - 1 {
+//            cell.balanceLbl.text = "0.00"
+//        }
         return cell
     }
     
@@ -74,5 +85,17 @@ extension EMIDetailViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EMIDetailHeaderCell") as? EMIDetailHeaderCell
         return cell
+    }
+    
+    func getMothlyEmiDetail(cell:EMIDetailCell){
+        let interest:Float =  ((roi/100)/12) * principleamount
+        paidPrincipal = emi - interest
+        principleamount = principleamount - paidPrincipal
+        
+        cell.interestLbl.text = String(format: "%.2f", interest)//"\(interest)"
+        cell.principalLbl.text = String(format: "%.2f", paidPrincipal)//"\(paidPrincipal)"
+        cell.balanceLbl.text = String(format: "%.2f", principleamount)//"\(principleamount)"
+
+
     }
 }

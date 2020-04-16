@@ -67,12 +67,14 @@ class EMIDeleteHistoryController: UIViewController {
     }
     @IBAction func backButton(_ sender: Any) {
         if arrData.count > 0 {
-            self.navigationController?.popViewController(animated: false)
+            self.popVC()
+//            self.navigationController?.popViewController(animated: false)
             NotificationCenter.default.removeObserver(self);
         }else{
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: EMIInitialFormViewController.self) {
-                    self.navigationController!.popToViewController(controller, animated: true)
+                    self.popToVC(vc: controller)
+//                    self.navigationController!.popToViewController(controller, animated: true)
                     break
                 }
             }

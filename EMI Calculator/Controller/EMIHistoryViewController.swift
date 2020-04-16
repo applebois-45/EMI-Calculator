@@ -41,12 +41,13 @@ class EMIHistoryViewController: UIViewController {
     }
     @IBAction func deleteBtnAction(_ sender: Any) {
             let vc = EMIDeleteHistoryController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        pushVC(vc)
+//        self.navigationController?.pushViewController(vc, animated: false)
     }
 
     @IBAction func backButton(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: false)
+        self.popVC()
+//        self.navigationController?.popViewController(animated: false)
         NotificationCenter.default.removeObserver(self);
         
     }
