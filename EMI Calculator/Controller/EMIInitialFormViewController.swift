@@ -130,12 +130,16 @@ class EMIInitialFormViewController: UIViewController {
 
     @IBAction func calculateBtnAction(_ sender: Any) {
          selectedTxtField.resignFirstResponder()
+        setupTextField()
         calculateBtn.isHidden = true
         loanDetailContainerView.isHidden = false
         updatelblVal()
         createData()
-        reloadBtn.setImage(UIImage(named: "reloadField"), for: .normal)
-       isHistory = false
+        DispatchQueue.main.async {
+            self.reloadBtn.setImage(UIImage(named: "reloadField"), for: .normal)
+        }
+        isHistory = false
+
 
     }
     
@@ -158,8 +162,8 @@ class EMIInitialFormViewController: UIViewController {
     }
     @IBAction func historyBtnAction(_ sender: Any) {
         
-        let vc = EMIHistoryViewController()
-        pushVC(vc)
+        self.historyAction(sender: sender)
+
 //        self.navigationController?.pushViewController(vc, animated: false)
         selectedTxtField.resignFirstResponder()
 
@@ -167,11 +171,14 @@ class EMIInitialFormViewController: UIViewController {
     
     @IBAction func reloadTextfield(_ sender: Any) {
         if isHistory {
-            let vc = EMIHistoryViewController()
-            pushVC(vc)
-//            self.navigationController?.pushViewController(vc, animated: false)
+            historyAction(sender: sender)
             selectedTxtField.resignFirstResponder()
         }else{
+            requiredAmountTxtField.text?.removeAll()
+            tenureYearsTxtField.text?.removeAll()
+            tenureMonthsTxtField.text?.removeAll()
+            roiTxtField.text?.removeAll()
+            checkforEmpty()
             calculateBtn.isHidden = false
             loanDetailContainerView.isHidden = true
             selectedTxtField.resignFirstResponder()
@@ -197,7 +204,34 @@ class EMIInitialFormViewController: UIViewController {
         
     }
     
-    
+    func historyAction(sender:Any){
+        let vc = EMIHistoryViewController()
+        vc.callBck =  { (emiDetail :EMIHistoryModel?) in
+            if let emiDetailData = emiDetail{
+                
+                self.requiredAmountTxtField.text = self.moneyFormatter(text: emiDetailData.loanAmount ?? "")
+                self.roiTxtField.text = emiDetailData.roi
+                
+                self.tenureYearsTxtField.text = emiDetailData.tenureYear
+                
+                self.tenureMonthsTxtField.text = emiDetailData.tenureMonth
+                
+                 guard let roi = Float(emiDetailData.roi ?? "") else{return}
+                self.roi = roi
+                guard let month = Int(emiDetailData.tenureMonth ?? "") else{return}
+                 self.months = month
+                guard let year = Int(emiDetailData.tenureYear ?? "") else{return}
+                self.years = year
+                guard let amount = Int(self.converMoneyToString(str: emiDetailData.loanAmount ?? "")) else {return}
+                self.amount = amount
+                guard let emi = Double(emiDetailData.emi ?? "") else {return}
+                self.emi = emi
+                self.calculateBtnAction(sender)
+                vc.popVC()
+            }
+        }
+        pushVC(vc)
+    }
 
     func checkforEmpty(){
         
@@ -259,6 +293,9 @@ extension EMIInitialFormViewController: UITextFieldDelegate{
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == tenureMonthsTxtField{
+            
+        }
         if textField == tenureYearsTxtField || textField == tenureMonthsTxtField{
         let maxLength = 2
         let currentString: NSString = textField.text! as NSString
@@ -417,8 +454,10 @@ extension EMIInitialFormViewController{
                     if index == result.count-1{
                         print(result[index].value(forKey: "id") as! Int64)
                         self.id = Int(result[index].value(forKey: "id") as! Int64)
-                        isHistory = true
-                        reloadBtn.setImage(UIImage(named: "history.png"), for: .normal)
+                        if loanDetailContainerView.isHidden == true {
+                            isHistory = true
+                            reloadBtn.setImage(UIImage(named: "history.png"), for: .normal)
+                        }
                     }
                 }
                 if result.count == 0{
@@ -511,4 +550,30 @@ extension UIViewController {
 //            self.navigationController?.popViewController(animated: true)
         }
 
+}
+ extension UIScrollView {
+     func scrollTo(direction: ScrollDirection, animated: Bool = true) {
+        self.setContentOffset(direction.contentOffsetWith(scrollView: self), animated: animated)
+     }
+ }
+enum ScrollDirection {
+    case Top
+    case Right
+    case Bottom
+    case Left
+    
+    func contentOffsetWith(scrollView: UIScrollView) -> CGPoint {
+        var contentOffset = CGPoint.zero
+        switch self {
+            case .Top:
+                contentOffset = CGPoint(x: 0, y: -scrollView.contentInset.top)
+            case .Right:
+                contentOffset = CGPoint(x: scrollView.contentSize.width - scrollView.bounds.size.width, y: 0)
+            case .Bottom:
+                contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+            case .Left:
+                contentOffset = CGPoint(x: -scrollView.contentInset.left, y: 0)
+        }
+        return contentOffset
+    }
 }

@@ -15,6 +15,7 @@ class EMIHistoryViewController: UIViewController {
    @IBOutlet weak var applyBtn: UIButton!
    @IBOutlet weak var tableviewHeight: NSLayoutConstraint!
    var id = 0
+    var callBck : ((EMIHistoryModel) -> (Void))?
     var arrData = [EMIHistoryModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class EMIHistoryViewController: UIViewController {
     }
 
     @IBAction func backButton(_ sender: Any) {
+        
         self.popVC()
 //        self.navigationController?.popViewController(animated: false)
         NotificationCenter.default.removeObserver(self);
@@ -99,6 +101,9 @@ extension EMIHistoryViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.callBck?(arrData[indexPath.row])
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PDFKit
 
 class EMIDetailViewController: UIViewController {
 
@@ -14,12 +15,12 @@ class EMIDetailViewController: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var tableviewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     var emi:Float = 0
     var tenureYrs = 0
     var tenureMonths = 0
     var principleamount:Float = 0.0
     var roi:Float = 0.0
-    
     var paidPrincipal:Float = 0.0
     
     override func viewDidLoad() {
@@ -42,9 +43,39 @@ class EMIDetailViewController: UIViewController {
         
         
     }
-
+//    override func viewWillAppear(_ animated: Bool) {
+//        scrollView.scrollTo(direction: .Bottom)
+//    }
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.scrollTo(direction: .Bottom)
+    }
 
     @IBAction func savePdf(_ sender: Any) {
+        let pdfPath = itemList.exportAsPdfFromView()
+        print(pdfPath)
+//        view.addSubview(pdfView)
+        let pdfURl = URL(fileURLWithPath: pdfPath)
+        guard let document = PDFDocument(url: pdfURl) else{return}
+//            pdfView.document = document
+//        }
+        
+               
+        // Create the Array which includes the files you want to share
+       var filesToShare = [Any]()
+       
+               // Add the path of the file to the Array
+        filesToShare.append(pdfURl)
+       
+               // Make the activityViewContoller which shows the share-view
+       let activityViewController = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
+       
+               // Show the share-view
+       self.present(activityViewController, animated: true, completion: nil)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+//            self.pdfView.removeFromSuperview()
+//            self.dismiss(animated: true, completion: nil)
+//        }
         
     }
     @IBAction func backButton(_ sender: Any) {
@@ -54,6 +85,11 @@ class EMIDetailViewController: UIViewController {
         
     }
     
+    var pdfView = PDFView()
+
+    override func viewDidLayoutSubviews() {
+        pdfView.frame = view.frame
+    }
 
 }
 extension EMIDetailViewController: UITableViewDelegate,UITableViewDataSource{
@@ -97,5 +133,33 @@ extension EMIDetailViewController: UITableViewDelegate,UITableViewDataSource{
         cell.balanceLbl.text = String(format: "%.2f", principleamount)//"\(principleamount)"
 
 
+    }
+}
+
+extension UITableView{
+    
+    func exportAsPdfFromView() -> String {
+        
+        let pdfPageFrame = self.bounds
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageFrame, nil)
+        UIGraphicsBeginPDFPageWithInfo(pdfPageFrame, nil)
+        guard let pdfContext = UIGraphicsGetCurrentContext() else { return "" }
+        self.layer.render(in: pdfContext)
+        UIGraphicsEndPDFContext()
+        return self.saveViewPdf(data: pdfData)
+        
+    }
+    // Save pdf file in document directory
+    func saveViewPdf(data: NSMutableData) -> String {
+        
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let docDirectoryPath = paths[0]
+        let pdfPath = docDirectoryPath.appendingPathComponent("emiDetails.pdf")
+        if data.write(to: pdfPath, atomically: true) {
+            return pdfPath.path
+        } else {
+            return ""
+        }
     }
 }
