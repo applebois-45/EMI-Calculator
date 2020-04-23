@@ -13,6 +13,8 @@ class DeleteHistoryCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var emiLbl: UILabel!
     @IBOutlet weak var emiDetailLbl: UILabel!
+    @IBOutlet weak var noItemView: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,7 @@ class DeleteHistoryCell: UITableViewCell {
         containerView.clipsToBounds = true
         containerView.layer.borderWidth = 1
         containerView.layer.borderColor = UIColor(red: 218/255, green: 223/255, blue: 234/255, alpha: 1).cgColor
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

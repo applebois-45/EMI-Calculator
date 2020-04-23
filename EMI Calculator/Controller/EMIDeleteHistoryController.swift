@@ -103,7 +103,12 @@ class EMIDeleteHistoryController: UIViewController {
 
 extension EMIDeleteHistoryController: UITableViewDelegate,UITableViewDataSource{
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            self.tableviewHeight.constant = CGFloat(80 * (arrData.count ))
+        if arrData.count == 0 {
+            self.tableviewHeight.constant = CGFloat(80)
+            self.view.layoutIfNeeded()
+            return 1
+        }
+        self.tableviewHeight.constant = CGFloat(80 * (arrData.count ))
             self.view.layoutIfNeeded()
             return arrData.count
         }
@@ -111,6 +116,12 @@ extension EMIDeleteHistoryController: UITableViewDelegate,UITableViewDataSource{
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteHistoryCell") as? DeleteHistoryCell else {return UITableViewCell()}
     //        cell.monthLbl.text = "\(indexPath.row + 1)"
+            
+            if arrData.count == 0 {
+                cell.noItemView.isHidden = false
+                return cell
+            }
+            
             let emiDecimalValue = Float( arrData[indexPath.row].emi ?? "0")
             cell.emiLbl.text = "EMI: " + String(format: "%.2f", emiDecimalValue!)
             let moneyStr = moneyFormatter(text: arrData[indexPath.row].loanAmount ?? "")
@@ -133,7 +144,9 @@ extension EMIDeleteHistoryController: UITableViewDelegate,UITableViewDataSource{
         return 80
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        deleteSingle(index: indexPath.row)
+        if arrData.count > 0{
+            deleteSingle(index: indexPath.row)
+        }
     }
     
 }
